@@ -20,9 +20,11 @@ vim-endwise
 vim-fugitive
 vim-gitgutter
 vim-indent-guides
+vim-jade
 vim-pyte
 vim-rails
 vim-railscasts-theme
 vim-slim
 vim-slime
+vim-swift
 vimshell

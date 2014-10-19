@@ -1,11 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Users/YutoKitakuni/projects/SocialTools/app/uploaders'
-let g:netrw_dirhist_2='/Users/YutoKitakuni/projects/positionstrategy/vendor/assets/stylesheets'
-let g:netrw_dirhist_3='/Users/YutoKitakuni/projects/SocialTools/app/assets/stylesheets'
-let g:netrw_dirhist_4='/Users/YutoKitakuni/projects/buycall/app/assets/stylesheets'
-let g:netrw_dirhist_5='/Users/YutoKitakuni/projects/buycall/app/views/orders'
-let g:netrw_dirhist_6='/Users/YutoKitakuni/projects/buycall/app'
-let g:netrw_dirhist_7='/Users/YutoKitakuni/projects/yozigexn_cs/config/settings'
-let g:netrw_dirhist_8='/Users/YutoKitakuni/projects/yozigexn_cs/app/assets/stylesheets'
-let g:netrw_dirhist_9='/Users/YutoKitakuni/projects/positionstrategy'
+let g:netrw_dirhist_cnt =0

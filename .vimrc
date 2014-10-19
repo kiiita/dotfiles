@@ -1,9 +1,8 @@
 set list
 set listchars=tab:>\
 syntax on
-colorscheme ron
-" 基本的な設定
 set laststatus=2
+colorscheme ron
 if !has('gui_running')
   set t_Co=256
 endif
@@ -17,68 +16,34 @@ augroup END
 hi clear CursorLine
 hi CursorLine gui=underline
 hi CursorLine ctermbg=242 guibg=242
-"新しい行のインデントを現在行と同じにする
 set autoindent
-"バックアップファイルのディレクトリを指定する
 set backupdir=$HOME/vimbackup
-"クリップボードをWindowsと連携する
 set clipboard=unnamed
-  
-"vi互換をオフする
 set nocompatible
-   
-"スワップファイル用のディレクトリを指定する
 set directory=$HOME/vimbackup
-   
-"タブの代わりに空白文字を指定する
 set expandtab
-     
-"変更中のファイルでも、保存しないで他のファイルを表示する
 set hidden
-      
-"インクリメンタルサーチを行う
 set incsearch
-      
-"行番号を表示する
 set number
-        
-"閉括弧が入力された時、対応する括弧を強調する
 set showmatch
-         
-"新しい行を作った時に高度な自動インデントを行う
-"set smarttab
-          
-" grep検索を設定する
+set smarttab
 set grepformat=%f:%l:%m,%f:%l%m,%f\ \ %l%m,%f
 set grepprg=grep\ -nh
-
-" クリップボード共有
-" http://vim-users.jp/2010/02/hack126/
 set clipboard+=unnamedplus,unnamed
-      
-" 検索結果のハイライトをEsc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>
-" 挿入モードでのカーソル移動
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
-" C-jでノーマルモードに移行する
 inoremap <silent> <C-c> <ESC>
-
-" :Rconfigでroutes.rbを開く
 autocmd User Rails Rnavcommand config config   -glob=*.*  -suffix= -default=routes.rb
 
 
 
 if has("autocmd")
-"ファイルタイプの検索を有効にする
 filetype plugin on
-"そのファイルタイプにあわせたインデントを利用する
 filetype indent on
 filetype plugin indent on
-" これらのftではインデントを無効に
-"autocmd FileType php filetype indent off
 
 autocmd BufRead,BufNewFile *.erb set filetype=html
 autocmd FileType apache     setlocal sw=4 sts=4 ts=4 et
@@ -88,6 +53,7 @@ autocmd FileType cpp        setlocal sw=4 sts=4 ts=4 et
 autocmd FileType cs         setlocal sw=4 sts=4 ts=4 et
 autocmd FileType css        setlocal sw=2 sts=2 ts=2 et
 autocmd FileType scss       setlocal sw=2 sts=2 ts=2 et
+autocmd FileType sass       setlocal sw=2 sts=2 ts=2 et
 autocmd FileType tss        setlocal sw=2 sts=2 ts=2 et
 autocmd FileType diff       setlocal sw=4 sts=4 ts=4 et
 autocmd FileType eruby      setlocal sw=4 sts=4 ts=4 et
@@ -101,6 +67,7 @@ autocmd FileType python     setlocal sw=4 sts=4 ts=4 et
 autocmd FileType ruby       setlocal sw=2 sts=2 ts=2 et
 autocmd FileType haml       setlocal sw=2 sts=2 ts=2 et
 autocmd FileType slim       setlocal sw=2 sts=2 ts=2 et
+autocmd FileType coffee       setlocal sw=2 sts=2 ts=2 et
 autocmd FileType sh         setlocal sw=4 sts=4 ts=4 et
 autocmd FileType sql        setlocal sw=4 sts=4 ts=4 et
 autocmd FileType vb         setlocal sw=4 sts=4 ts=4 et
@@ -113,13 +80,6 @@ autocmd FileType zsh        setlocal sw=4 sts=4 ts=4 et
 autocmd FileType scala      setlocal sw=2 sts=2 ts=2 et
 endif
 
-"--------
-"カラースキーム
-"--------
-
-"--------
-" NeoBundle
-"--------
 set nocompatible               " be iMproved
 filetype off
 
@@ -128,15 +88,13 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
   call neobundle#rc(expand('~/.vim/bundle/'))
 endif
-" originalrepos on github
 NeoBundle 'Shougo/neobundle.vim'
-"NeoBundle 'Shougo/vimproc'
+NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'VimClojure'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'Shougo/neocomplcache'
-"NeoBundle 'Shougo/neosnippet'
 NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'scrooloose/nerdtree'
@@ -157,7 +115,7 @@ NeoBundle 'mrkn/mrkn256.vim'
 NeoBundle 'jpo/vim-railscasts-theme'
 NeoBundle 'therubymug/vim-pyte'
 NeoBundle 'tomasr/molokai'
-"NeoBundle 'https://bitbucket.org/kovisoft/slimv'
+NeoBundle 'toyamarinyon/vim-swift'
 
 filetype plugin indent on     " required!
 filetype indent on
@@ -171,39 +129,19 @@ NeoBundleLazy 'alpaca-tc/vim-endwise.git', {
       \   'insert' : 1,
       \ }}
 
-"neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_force_overwrite_completefunc = 1
 
-" indent-guides
 hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 2
 
-" neosnippet "{{{
- 
-" snippetを保存するディレクトリを設定してください
-" example
-" let s:default_snippet = neobundle#get_neobundle_dir() . '/neosnippet/autoload/neosnippet/snippets' " 本体に入っているsnippet
-" let s:my_snippet = '~/snippet' " 自分のsnippet
-" let g:neosnippet#snippets_directory = s:my_snippet
-" let g:neosnippet#snippets_directory = s:default_snippet . ',' . s:my_snippet
 imap <silent><C-F>                <Plug>(neosnippet_expand_or_jump)
 inoremap <silent><C-U>            <ESC>:<C-U>Unite snippet<CR>
 nnoremap <silent><Space>e         :<C-U>NeoSnippetEdit -split<CR>
 smap <silent><C-F>                <Plug>(neosnippet_expand_or_jump)
-" xmap <silent>o                    <Plug>(neosnippet_register_oneshot_snippet)
-"}}}
-
-""NERDTree {{{
-" http://kokukuma.blogspot.jp/2012/03/vim-nerdtree.html
-
-
-" カーソルが外れているときは自動的にnerdtreeを隠す
 function! ExecuteNERDTree()
-"b:nerdstatus = 1 : NERDTree 表示中
-"b:nerdstatus = 2 : NERDTree 非表示中
 
 if !exists('g:nerdstatus')
 execute 'NERDTree ./'
