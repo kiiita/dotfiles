@@ -2,6 +2,7 @@ Lucius
 VimClojure
 YankRing.vim
 Zenburn
+easybracket-vim
 jellybeans.vim
 lightline.vim
 molokai
@@ -9,13 +10,16 @@ mrkn256.vim
 mustang-vim
 neobundle.vim
 neocomplcache
+neorspec.vim
 nerdtree
+rspec.vim
 syntastic
 unite-colorscheme
 unite.vim
 vim-coffee-script
 vim-colors-solarized
 vim-colors-wombat
+vim-dispatch
 vim-endwise
 vim-fugitive
 vim-gitgutter
@@ -24,6 +28,7 @@ vim-jade
 vim-pyte
 vim-rails
 vim-railscasts-theme
+vim-rspec
 vim-slim
 vim-slime
 vim-swift

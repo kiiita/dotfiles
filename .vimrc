@@ -1,17 +1,13 @@
 set list
 set listchars=tab:>\
-syntax on
 set laststatus=2
 colorscheme ron
 if !has('gui_running')
   set t_Co=256
 endif
 set noswapfile
-set cursorline
 augroup cch
   autocmd! cch
-  autocmd WinLeave * set nocursorline
-  autocmd WinEnter,BufRead * set cursorline
 augroup END
 hi clear CursorLine
 hi CursorLine gui=underline
@@ -116,10 +112,13 @@ NeoBundle 'jpo/vim-railscasts-theme'
 NeoBundle 'therubymug/vim-pyte'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'toyamarinyon/vim-swift'
+NeoBundle 'Keithbsmiley/rspec.vim'
+NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'thoughtbot/vim-rspec'
+NeoBundle 'MetalPhaeton/easybracket-vim'
 
 filetype plugin indent on     " required!
 filetype indent on
-syntax on
 
 NeoBundle 'tpope/vim-rails', { 'autoload' : {
       \ 'filetypes' : ['haml', 'ruby', 'eruby'] }}
@@ -306,3 +305,35 @@ function! MyCharCode()
 
   return "'". char ."' ". nr
 endfunction
+
+"===========================
+ " quickrun settings
+ "===========================
+  let g:quickrun_config = {}
+  let g:quickrun_config._ = {'runner' : 'vimproc', "runner/vimproc/updatetime" : 10}
+  let g:quickrun_config['ruby.rspec'] = {'command': 'rspec', 'exec': 'bundle exec %c', 'cmdopt': '-cfd'}
+
+  augroup QRunRSpec
+    autocmd!
+    autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
+  augroup END
+
+  nnoremap [quickrun] <Nop>
+  nmap <Space>k [quickrun]
+  nnoremap <silent> [quickrun]r :call QRunRspecCurrentLine()<CR>
+  fun! QRunRspecCurrentLine()
+    let line = line(".")
+  exe ":QuickRun -exec 'bundle exec %c %s%o' -cmdopt ':" . line . " -cfd'"
+endfun
+
+NeoBundleLazy 'taichouchou2/neorspec.vim', {
+      \ 'depends' : ['tpope/vim-rails', 'tpope/vim-dispatch'],
+      \ 'autoload' : {
+      \   'commands' : ['RSpec', 'RSpecAll', 'RSpecCurrent', 'RSpecNearest', 'RSpecRetry']
+      \ }}
+set nocursorcolumn
+set nocursorline
+set norelativenumber
+syntax on
+syntax sync minlines=256
+set scrolljump=5

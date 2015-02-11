@@ -11,13 +11,16 @@ ZSH_THEME="robbyrussell"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias v="vim"
 alias be="bundle exec"
 alias gs='git status'
+alias gp='git pull'
 alias ga='git add '
 alias gb='git branch '
 alias gc='git commit'
 alias gd='git diff'
 alias go='git checkout '
+alias rubo='rubocop'
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 

@@ -1,2 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/YutoKitakuni/projects/mistyline_registration/app/views/teller_admin/home'
+let g:netrw_dirhist_2='/Users/YutoKitakuni/projects/wishhub/config/settings'
+let g:netrw_dirhist_3='/Users/YutoKitakuni/projects/musiccuration/app/controllers/admin_users'
+let g:netrw_dirhist_4='/Users/YutoKitakuni/projects/fonte'
+let g:netrw_dirhist_5='/Users/YutoKitakuni/projects/CurationMedia/lib/tasks'
